@@ -24,6 +24,8 @@ For pdf combining
 
 ## Local installation
 
+You can clone the git repository, or use the archive. The installation location is expected to be `~/git/feminisation_direction`, if you choose a differente location, rename this path in all scripts.
+
 	mkdir ~/git
 
 	cd ~/git
@@ -32,31 +34,35 @@ For pdf combining
 
 	cd ~/git/feminisation_direction
 
+All output is written in this folder
+
 	mkdir output
 
-## Order to run scripts
+# Run analysis scripts
 
-Remove rDNA genes from counts
+Most analysis is run from the terminal. Occasionally, manually changing or commenting some lines in the scripts is needed.
+
+## Remove rDNA genes from counts
 
 	cd ~/git/feminisation_direction/input
 
 	grep -vFwf rDNA_transcripts.txt count.txt > new_count.txt
 	
-Generate the courtship related data and matrices, from the table of full counts
+## Generate the courtship related data and matrices, from the table of full counts
 
 	Rscript ~/git/feminisation_direction/scripts/data_generation.r
 
-Run the bias analyses (courtship, sex, tissue)
+## Run the bias analyses (courtship, sex, tissue)
 
 Notice lines 78 and 80 in `bias_analysis.r` allow to exclude sex specific genes. They write the same output files, which can be kept in separate folders in the input folder, for quick access `sex_bias_B`, `sex_bias_B_sex_specific_removed`. The batch script either uses all types of line (E, M, B) or only B (Baseline). Baseline only was used, so that the calls are not influenced by the experimental treatment (ie EMB are for reference only).
 
 	source ~/git/feminisation_direction/scripts/batch_bias.sh
 
-Run the EM contrast analyses (8 combinations of sex, tissue, courtship)
+## Run the EM contrast analyses (8 combinations of sex, tissue, courtship)
 
 	source ~/git/feminisation_direction/scripts/batch_constrain.sh
 
-Compile gene information from each contrast
+### Compile gene information from each contrast
 
 	cd ~/git/feminisation_direction/output/subsets
 
@@ -72,7 +78,7 @@ Compile gene information from each contrast
 	
 	tail -n +1 * > all_table.txt
 
-Make panels of interesting graphs, in same order for 8 comparisons
+### Make panels of interesting graphs, in same order for 8 comparisons
 
 	cd ~/git/feminisation_direction/output/subsets
 
@@ -82,7 +88,7 @@ Make panels of interesting graphs, in same order for 8 comparisons
 
 	while read COL_1 COL_2; do echo ">> ";mkdir tmp/$COL_1; for i in $(ls | grep -v pdf | grep EM); do cp $i/$COL_2* tmp/$COL_1; done; pdfjam tmp/$COL_1/*.pdf --landscape --outfile tmp/$COL_1.pdf; pdfjam tmp/$COL_1.pdf '3,7,4,8,1,5,2,6' --nup 2x4 --outfile panels/$COL_1.pdf; done < ~/git/feminisation_direction/scripts/subset_panels.txt
 
-# if some heatmaps do not work, replace with the robust version
+If some heatmaps do not work, replace with the robust version
 
 	pdfjam tmp/Heatmap_DE/*.pdf '1' --landscape --outfile tmp/heatmap_median.pdf; pdfjam tmp/heatmap_median.pdf '3,7,4,8,1,5,2,6' --nup 2x4 --outfile panels/heatmap_median.pdf
 
@@ -136,7 +142,7 @@ Go to the folder of the relevant comparisons, and run the analysis for all contr
 
 Copy the pseudo_count files from the 8 contrasts into an input folder. Note, more columns are present in those files, than used for randomisation.
 
-The code selects folders (EMFCB, EMFCH, EMFVB, EMFVH, EMMCB, EMMCH, EMMVB, EMMVH)
+The code should select folders `EMFCB, EMFCH, EMFVB, EMFVH, EMMCB, EMMCH, EMMVB, EMMVH`, run the `ls` part only first, to make sure.
 
 	mkdir ~/git/feminisation_direction/input/pseudo_counts
 
@@ -174,7 +180,7 @@ Copy DE genes from sex contrasts (sexual selection genes already copied), into t
 
 Run manually the script `DE_genes.r`
 
-Edit line 23 to appropriate plottype (options commented on the line).
+Edit line 23 to appropriate plottype (options appear as comments on the line).
 	
 Edit line 50-53 to appropriate plottype.
 
