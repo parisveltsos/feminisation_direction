@@ -1,0 +1,13 @@
+model_coefficients	T_H/B_EMB_M_All	T_H/B_EMB_M_EM	T_H/B_EMB_M_E	T_H/B_EMB_M_M	T_H/B_EMB_M_B
+B_M_C_B	-1	0	0	0	-1
+E_M_C_B	-1	-1	-1	0	0
+M_M_C_B	-1	-1	0	-1	0
+B_M_C_H	1	0	0	0	1
+E_M_C_H	1	1	1	0	0
+M_M_C_H	1	1	0	1	0
+B_M_V_B	-1	0	0	0	-1
+E_M_V_B	-1	-1	-1	0	0
+M_M_V_B	-1	-1	0	-1	0
+B_M_V_H	1	0	0	0	1
+E_M_V_H	1	1	1	0	0
+M_M_V_H	1	1	0	1	0

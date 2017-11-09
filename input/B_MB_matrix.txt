@@ -1,0 +1,3 @@
+model_coefficients	S_V/C_B_MB_B	S_V/C_B_MB_B2
+B_M_C_B	-1	1
+B_M_V_B	1	-1

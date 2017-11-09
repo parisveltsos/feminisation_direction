@@ -1,0 +1,5 @@
+model_coefficients	T_H/B_B_F_B
+B_F_C_B	-1
+B_F_C_H	1
+B_F_V_B	-1
+B_F_V_H	1

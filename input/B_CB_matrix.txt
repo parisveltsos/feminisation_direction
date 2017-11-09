@@ -1,0 +1,3 @@
+model_coefficients	G_M/F_B_CB_B
+B_F_C_B	-1
+B_M_C_B	1

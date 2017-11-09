@@ -1,0 +1,7 @@
+model_coefficients	G_M/F_EMB_VH	G_M/F_EMB_VH_EM	G_M/F_EMB_VH_E	G_M/F_EMB_VH_M	G_M/F_EMB_VH_B
+B_F_V_H	-1	0	0	0	-1
+E_F_V_H	-1	-1	-1	0	0
+M_F_V_H	-1	-1	0	-1	0
+B_M_V_H	1	0	0	0	1
+E_M_V_H	1	1	1	0	0
+M_M_V_H	1	1	0	1	0

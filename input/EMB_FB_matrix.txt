@@ -1,0 +1,7 @@
+model_coefficients	S_V/C_EMB_FB	S_V/C_EMB_FB_EM	S_V/C_EMB_FB_E	S_V/C_EMB_FB_M	S_V/C_EMB_FB_B
+B_F_C_B	-1	0	0	0	-1
+E_F_C_B	-1	-1	-1	0	0
+M_F_C_B	-1	-1	0	-1	0
+B_F_V_B	1	0	0	0	1
+E_F_V_B	1	1	1	0	0
+M_F_V_B	1	1	0	1	0
