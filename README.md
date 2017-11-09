@@ -40,7 +40,7 @@ All output is written in this folder
 
 # Run analysis scripts
 
-Most analysis is run from the terminal. Occasionally, manually changing or commenting some lines in the scripts is needed.
+Most analysis is run from the terminal. Occasionally, manually changing or commenting some lines in the scripts is needed. The final output folder size after the analysis is run is ≈1.7 Gb.
 
 ## Remove rDNA genes from counts
 
