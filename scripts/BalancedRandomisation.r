@@ -1,7 +1,7 @@
 graphics.off()
 
 # change to location where fileS3 is unzipped
-datap="~/git/feminisation_direction/input/pseudo_counts"
+datap="~/git/feminisation_direction/input/EM_bias_pseudo_counts"
 setwd(datap)
 dataf=list.files()[grep("EM[A-Z]",list.files())]
 dataf=paste0(datap,"/",dataf)

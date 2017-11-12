@@ -58,11 +58,21 @@ Notice lines 78 and 80 in `bias_analysis.r` allow to exclude sex specific genes.
 
 	source ~/git/feminisation_direction/scripts/batch_bias.sh
 
+### Compile gene information from each courtship contrast
+
+The output files from a previously run analysis are already available, for reference, as zip files
+
+	mkdir ~/git/feminisation_direction/input/courtship_bias_pseudo_counts
+
+The code should select folders `B_FB, B_MB, B_MH, B_FH`, run the `ls` part only first, to make sure.
+
+	for i in $(ls ~/git/feminisation_direction/output/courtship_bias_analysis/| grep -Ev 'pdf|txt|GO'); do cp ~/git/feminisation_direction/output/courtship_bias_analysis/$i/$i\_pseudo_counts.txt ~/git/feminisation_direction/input/courtship_bias_pseudo_counts; done
+
 ## Run the EM contrast analyses (8 combinations of sex, tissue, courtship)
 
 	source ~/git/feminisation_direction/scripts/batch_constrain.sh
 
-### Compile gene information from each contrast
+### Compile gene information from each sexual selection contrast contrast
 
 	cd ~/git/feminisation_direction/output/subsets
 
@@ -140,13 +150,13 @@ Go to the folder of the relevant comparisons, and run the analysis for all contr
 
 ## Randomisation
 
-Copy the pseudo_count files from the 8 contrasts into an input folder. Note, more columns are present in those files, than used for randomisation.
+Copy the pseudo_count files from the 8 contrasts into an input folder. Note, more columns are present in those files, than used for randomisation. Note, these files are already available in the download as zip files, for easy reference.
 
 The code should select folders `EMFCB, EMFCH, EMFVB, EMFVH, EMMCB, EMMCH, EMMVB, EMMVH`, run the `ls` part only first, to make sure.
 
-	mkdir ~/git/feminisation_direction/input/pseudo_counts
+	mkdir ~/git/feminisation_direction/input/EM_bias_pseudo_counts
 
-	for i in $(ls ~/git/feminisation_direction/output/subsets/| grep -Ev 'pdf|txt|All|zip|genes|panels|chisq'); do cp ~/git/feminisation_direction/output/subsets/$i/$i\_pseudo_counts.txt ~/git/feminisation_direction/input/pseudo_counts/; done
+	for i in $(ls ~/git/feminisation_direction/output/subsets/| grep -Ev 'pdf|txt|All|zip|genes|panels|chisq|GO'); do cp ~/git/feminisation_direction/output/subsets/$i/$i\_pseudo_counts.txt ~/git/feminisation_direction/input/EM_bias_pseudo_counts/; done
 
 Run the randomisation scripts. The output files appear in their own `output/results_standard_randomisation` and `output/results_balanced_randomisation` folders.
 
